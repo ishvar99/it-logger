@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import LogItem from "./LogItem"
+import PreLoader from "../layouts/PreLoader"
 export const Logs = () => {
   const [logs, setLogs] = useState([])
   const [loading, setLoading] = useState()
@@ -16,7 +17,7 @@ export const Logs = () => {
   return (
     <div>
       {loading ? (
-        <h4>loading...</h4>
+        <PreLoader />
       ) : (
         <ul className="collection with-header">
           <li className="collection-header">

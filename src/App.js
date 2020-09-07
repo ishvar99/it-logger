@@ -5,6 +5,10 @@ import M from "materialize-css/dist/js/materialize.min.js"
 import "./App.css"
 import { Logs } from "./components/logs/Logs"
 import AddButton from "./components/layouts/AddButton"
+import AddLogModal from "./components/logs/AddLogModal"
+import EditLogModal from "./components/logs/EditLogModal"
+import AddTechModal from "./technicians/AddTechModal"
+import TechListModal from "./technicians/ListTechModal"
 
 function App() {
   useEffect(() => {
@@ -15,6 +19,10 @@ function App() {
     <Fragment>
       <SearchBar />
       <Logs />
+      <EditLogModal />
+      <AddLogModal />
+      <AddTechModal />
+      <TechListModal />
       <AddButton />
     </Fragment>
   )

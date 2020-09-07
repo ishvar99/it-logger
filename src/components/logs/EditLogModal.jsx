@@ -1,9 +1,8 @@
-import React, { useState } from "react"
-// import TechSelectOptions from '../techs/TechSelectOptions';
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import M from "materialize-css/dist/js/materialize.min.js"
 
-const AddLogModal = () => {
+const EditLogModal = () => {
   const [message, setMessage] = useState("")
   const [attention, setAttention] = useState(false)
   const [tech, setTech] = useState("")
@@ -12,16 +11,15 @@ const AddLogModal = () => {
     if (message === "" || tech === "") {
       M.toast({ html: "Please enter a message and tech" })
     } else {
-      const newLog = {
+      const updLog = {
         message,
         attention,
         tech,
         date: new Date(),
       }
 
-      console.log(newLog)
-
-      M.toast({ html: `Log added by ${tech}` })
+      // updateLog(updLog)
+      M.toast({ html: `Log updated by ${tech}` })
 
       // Clear Fields
       setMessage("")
@@ -31,7 +29,7 @@ const AddLogModal = () => {
   }
 
   return (
-    <div id="add-log-modal" className="modal" style={modalStyle}>
+    <div id="edit-log-modal" className="modal" style={modalStyle}>
       <div className="modal-content">
         <h4>Enter System Log</h4>
         <div className="row">
@@ -42,9 +40,6 @@ const AddLogModal = () => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
-            <label htmlFor="message" className="active">
-              Log Message
-            </label>
           </div>
         </div>
 
@@ -93,13 +88,14 @@ const AddLogModal = () => {
   )
 }
 
-AddLogModal.propTypes = {
-  addLog: PropTypes.func.isRequired,
-}
-
 const modalStyle = {
   width: "75%",
   height: "75%",
 }
 
-export default AddLogModal
+EditLogModal.propTypes = {
+  current: PropTypes.object,
+  updateLog: PropTypes.func.isRequired,
+}
+
+export default EditLogModal

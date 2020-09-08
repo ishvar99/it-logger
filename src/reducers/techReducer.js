@@ -1,14 +1,7 @@
-import {
-  LOGS_ERROR,
-  SET_LOADING,
-  GET_LOGS,
-  ADD_LOG,
-  DELETE_LOG,
-} from "../action/types"
+import { TECHS_ERROR, SET_LOADING, GET_TECHS, ADD_TECH } from "../action/types"
 
 const initialState = {
-  logs: null,
-  current: null,
+  techs: null,
   error: null,
   loading: false,
 }
@@ -18,28 +11,20 @@ export default (state = initialState, action) => {
     case SET_LOADING: {
       return { ...state, loading: true }
     }
-    case LOGS_ERROR: {
+    case TECHS_ERROR: {
       return { ...state, error: action.payload }
     }
-    case GET_LOGS: {
+    case GET_TECHS: {
       return {
         ...state,
         loading: false,
-        logs: action.payload,
+        techs: action.payload,
       }
     }
-    case ADD_LOG: {
-      return {
-        ...state,
-        logs: [...state.logs, action.payload],
-        loading: false,
-      }
-    }
-    case DELETE_LOG: {
+    case ADD_TECH: {
       return {
         ...state,
         loading: false,
-        logs: state.logs.filter((log) => log.id !== action.payload),
       }
     }
     default:

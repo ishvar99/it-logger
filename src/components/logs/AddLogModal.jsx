@@ -1,15 +1,18 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 // import TechSelectOptions from '../techs/TechSelectOptions';
 import { addLog } from "../../action/logActions"
+import { getTechs } from "../../action/techActions"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
 import M from "materialize-css/dist/js/materialize.min.js"
 
-const AddLogModal = ({ addLog }) => {
+const AddLogModal = ({ tech: { techs, loading }, addLog, getTechs }) => {
+  useEffect(() => {
+    getTechs()
+  }, [])
+  const [tech, setTech] = useState("")
   const [message, setMessage] = useState("")
   const [attention, setAttention] = useState(false)
-  const [tech, setTech] = useState("")
-
   const onSubmit = () => {
     if (message === "") {
       M.toast({ html: "Please enter a message and tech" })
@@ -17,7 +20,7 @@ const AddLogModal = ({ addLog }) => {
       const newLog = {
         message,
         attention,
-        tech: "ishan",
+        tech: tech,
         date: new Date(),
       }
 
@@ -61,6 +64,15 @@ const AddLogModal = ({ addLog }) => {
               <option value="" disabled>
                 Select Technician
               </option>
+
+              {/* {techs &&
+                techs.map((tech) => {
+                  return (
+                    <option key={tech} value={tech}>
+                      {tech}
+                    </option>
+                  )
+                })} */}
             </select>
           </div>
         </div>
@@ -105,5 +117,6 @@ const modalStyle = {
 }
 const mapStateToProps = (state) => ({
   log: state.log,
+  tech: state.tech,
 })
-export default connect(mapStateToProps, { addLog })(AddLogModal)
+export default connect(mapStateToProps, { addLog, getTechs })(AddLogModal)

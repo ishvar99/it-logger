@@ -1,11 +1,18 @@
 {
   "logs": [
     {
+      "message": "hello everyone",
+      "attention": false,
+      "tech": "",
+      "date": "2020-09-08T13:54:25.864Z",
+      "id": 1
+    },
+    {
       "message": "critical issue",
       "attention": true,
       "tech": "",
-      "date": "2020-09-08T13:46:05.783Z",
-      "id": 1
+      "date": "2020-09-08T19:39:59.094Z",
+      "id": 2
     }
   ],
   "techs": [

@@ -27,6 +27,34 @@
       "attention": false,
       "tech": "Sara Wilson",
       "date": "2019-05-31T19:57:35.544Z"
+    },
+    {
+      "message": "critical message",
+      "attention": false,
+      "tech": "ishan",
+      "date": "2020-09-08T08:38:56.806Z",
+      "id": 6
+    },
+    {
+      "message": "Important message",
+      "attention": true,
+      "tech": "ishan",
+      "date": "2020-09-08T08:40:22.355Z",
+      "id": 7
+    },
+    {
+      "message": "Network Connection Lost",
+      "attention": false,
+      "tech": "ishan",
+      "date": "2020-09-08T08:43:01.038Z",
+      "id": 8
+    },
+    {
+      "message": "SHUT DOWN",
+      "attention": true,
+      "tech": "ishan",
+      "date": "2020-09-08T08:50:25.809Z",
+      "id": 9
     }
   ],
   "techs": [

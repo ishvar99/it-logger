@@ -1,22 +1,16 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import LogItem from "./LogItem"
 import PreLoader from "../layouts/PreLoader"
-export const Logs = () => {
-  const [logs, setLogs] = useState([])
-  const [loading, setLoading] = useState()
+import { connect } from "react-redux"
+import { getLogs } from "../../action/logActions"
+const Logs = ({ log: { logs, loading }, getLogs }) => {
   useEffect(() => {
     getLogs()
   }, [])
-  const getLogs = async () => {
-    setLoading(true)
-    const res = await fetch("/logs")
-    const data = await res.json()
-    setLogs(data)
-    setLoading(false)
-  }
+
   return (
     <div>
-      {loading ? (
+      {loading || logs === null ? (
         <PreLoader />
       ) : (
         <ul className="collection with-header">
@@ -33,3 +27,7 @@ export const Logs = () => {
     </div>
   )
 }
+const mapStateToProps = (state) => ({
+  log: state.log,
+})
+export default connect(mapStateToProps, { getLogs })(Logs)
